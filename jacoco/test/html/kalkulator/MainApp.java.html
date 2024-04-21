@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainApp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">kalkulator</a> &gt; <span class="el_source">MainApp.java</span></div><h1>MainApp.java</h1><pre class="source lang-java linenums">package kalkulator;
+
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+<span class="nc" id="L6">public class MainApp {</span>
+    public static void main(String[] args) {
+<span class="fc" id="L8">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L9">        DecimalFormat df = new DecimalFormat(&quot;#.######&quot;);</span>
+
+        try {
+<span class="fc" id="L12">            System.out.print(&quot;[ -------------------- Program Kalkulator -------------------- ]\n&quot;);</span>
+            
+<span class="fc" id="L14">            System.out.print(&quot;Masukkan operand pertama: &quot;);</span>
+<span class="fc" id="L15">            String operand1Input = scanner.nextLine().trim();</span>
+<span class="fc" id="L16">            Validator.validateInput(operand1Input, &quot;Operand pertama&quot;);</span>
+<span class="fc" id="L17">            double operand1 = Double.parseDouble(operand1Input);</span>
+<span class="fc" id="L18">            Validator.validateOperand(operand1);</span>
+
+<span class="fc" id="L20">            System.out.print(&quot;Masukkan operand kedua: &quot;);</span>
+<span class="fc" id="L21">            String operand2Input = scanner.nextLine().trim();</span>
+<span class="fc" id="L22">            Validator.validateInput(operand2Input, &quot;Operand kedua&quot;);</span>
+<span class="fc" id="L23">            double operand2 = Double.parseDouble(operand2Input);</span>
+<span class="fc" id="L24">            Validator.validateOperand(operand2);</span>
+
+<span class="fc" id="L26">            System.out.print(&quot;Masukkan operator (+, -, *, /): &quot;);</span>
+<span class="fc" id="L27">            String operatorInput = scanner.nextLine().trim();</span>
+<span class="fc" id="L28">            Validator.validateInput(operatorInput, &quot;Operator&quot;);</span>
+<span class="fc" id="L29">            char operator = operatorInput.charAt(0);</span>
+<span class="fc" id="L30">            Validator.validateOperator(operator);</span>
+
+<span class="fc" id="L32">            double result = Computation.compute(operand1, operand2, operator);</span>
+<span class="fc" id="L33">            System.out.println(&quot;Hasil: &quot; + df.format(result));</span>
+       
+<span class="fc" id="L35">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L36">            System.out.println(&quot;Error: Operand harus berupa angka&quot;);</span>
+<span class="fc" id="L37">        } catch (IllegalArgumentException e) {</span>
+<span class="fc" id="L38">            System.out.println(&quot;Error: &quot; + e.getMessage());</span>
+        } finally {
+<span class="fc" id="L40">            scanner.close();</span>
+        }
+<span class="fc" id="L42">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

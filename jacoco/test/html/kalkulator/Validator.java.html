@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">kalkulator</a> &gt; <span class="el_source">Validator.java</span></div><h1>Validator.java</h1><pre class="source lang-java linenums">package kalkulator;
+
+<span class="nc" id="L3">public class Validator {</span>
+
+    public static void validateOperand(double operand) {
+<span class="fc bfc" id="L6" title="All 4 branches covered.">        if (operand &lt; -32768 || operand &gt; 32767) {</span>
+<span class="fc" id="L7">            throw new IllegalArgumentException(&quot;Operand harus berada dalam range -32,768 hingga 32,767&quot;);</span>
+        }
+<span class="fc" id="L9">    }</span>
+
+    public static void validateOperator(char operator) {
+<span class="fc" id="L12">        String operatorString = Character.toString(operator).trim();</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        if (!operatorString.matches(&quot;[+\\-*/]&quot;)) {</span>
+<span class="fc" id="L14">            throw new IllegalArgumentException(&quot;Operator harus berupa +, -, *, atau /&quot;);</span>
+        }
+<span class="fc" id="L16">    }</span>
+
+    public static void validateInput(String input, String fieldName) {
+<span class="fc bfc" id="L19" title="All 2 branches covered.">    	 if (input.trim().isEmpty()) {</span>
+<span class="fc" id="L20">             throw new IllegalArgumentException(fieldName + &quot; harus diisi&quot;);</span>
+         }
+<span class="fc" id="L22">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
